@@ -23,14 +23,11 @@ const userRoutes=require('./routes/users.js');
 const campgroundRoutes=require('./routes/campground.js')
 const reviewRoutes=require('./routes/reviews.js')
 
-// const dbUrl=process.env.DB_URL;
-const dbUrl='mongodb://localhost:27017/yelp-camp';
-// 'mongodb://localhost:27017/yelp-camp'
+const dbUrl=process.env.DB_URL;
+
 mongoose.connect(dbUrl,{
     useNewUrlParser:true,
-    // useCreateIndex:true,
     useUnifiedTopology:true,
-    // useFindAndModify:false
 });
 
 const db=mongoose.connection;
@@ -86,22 +83,13 @@ app.use((req,res,next)=>{
 app.get("/",(req,res)=>{
     res.render("home.ejs");
 })
-// app.get("/fakeUser",async(req,res)=>{
-//     const user=new User({email:'',username:''});
-//     const newUser=await User.register(user,"chicken");
-//     res.send(newUser);
-// })
+
 
 app.use("/",userRoutes);
 app.use("/campgrounds",campgroundRoutes);
 app.use("/campgrounds/:id/reviews",reviewRoutes);
 app.use(express.static(path.join(__dirname,'public')));
 
-
-
-// app.all('*',(req,res,next)=>{
-//     res.status(404).send("404 - Page Not Found");
-// })
 
 app.use((err,req,res,next)=>{
     res.send("something wrong!!!");

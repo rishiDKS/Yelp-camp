@@ -5,7 +5,6 @@
     </div>
     <ul>
         <%for(let campground of campgrounds){%>
-            <!-- <li><a href="/campgrounds/<%=campground._id%>"> <%=campground.title%></li> -->
                 <div class="card mb-3">
                     <div class="row">
                         <div class="col-md-4">
@@ -18,7 +17,7 @@
                                 <p class="card-text">
                                     <small class="text-muted"><%=campground.location%></small>
                                 </p>
-                                <a class="btn btn-primary" href="campgrounds/<%=campground._id%>">View<%=campground.title%></a>
+                                <a class="btn btn-primary" href="campgrounds/<%=campground._id%>">View <%=campground.title%></a>
                             </div>
                         </div>
                     </div>
